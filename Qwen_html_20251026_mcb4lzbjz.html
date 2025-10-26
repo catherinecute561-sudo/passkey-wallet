@@ -1,0 +1,623 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="The world's first seedless crypto wallet. Secure self-custody with biometric passkeys—no seed phrases, no stress." />
+  <meta property="og:title" content="Passkey Wallet: Seedless Crypto Self-Custody" />
+  <meta property="og:description" content="Unlock your crypto with Face ID or fingerprint. Military-grade security without the complexity." />
+  <meta property="og:image" content="https://passkeywallet.io/og-image.jpg" />
+  <title>Passkey Wallet | Seedless Crypto Self-Custody</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --indigo: #25284A;
+      --electric-blue: #4D6FFF;
+      --electric-blue-hover: #3a58e0;
+      --light-gray: #f8f9ff;
+      --dark-gray: #6b7280;
+      --white: #ffffff;
+      --success: #10b981;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      color: var(--indigo);
+      background-color: var(--white);
+      line-height: 1.6;
+      overflow-x: hidden;
+    }
+
+    .container {
+      width: 100%;
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 20px;
+    }
+
+    section {
+      padding: 80px 0;
+    }
+
+    .btn {
+      display: inline-block;
+      padding: 14px 32px;
+      border-radius: 12px;
+      font-weight: 600;
+      text-align: center;
+      text-decoration: none;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      border: none;
+      font-size: 16px;
+    }
+
+    .btn-primary {
+      background: var(--electric-blue);
+      color: var(--white);
+    }
+
+    .btn-primary:hover {
+      background: var(--electric-blue-hover);
+      transform: translateY(-2px);
+      box-shadow: 0 4px 12px rgba(77, 111, 255, 0.3);
+    }
+
+    .btn-secondary {
+      background: transparent;
+      color: var(--electric-blue);
+      border: 2px solid var(--electric-blue);
+      margin-left: 16px;
+    }
+
+    .btn-secondary:hover {
+      background: rgba(77, 111, 255, 0.08);
+    }
+
+    /* Header */
+    header {
+      padding: 24px 0;
+      position: sticky;
+      top: 0;
+      background: rgba(255, 255, 255, 0.95);
+      backdrop-filter: blur(10px);
+      z-index: 100;
+      border-bottom: 1px solid rgba(37, 40, 74, 0.08);
+    }
+
+    .header-content {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .logo {
+      font-size: 24px;
+      font-weight: 700;
+      color: var(--indigo);
+      text-decoration: none;
+    }
+
+    .logo span {
+      color: var(--electric-blue);
+    }
+
+    /* Hero */
+    .hero {
+      padding: 100px 0 60px;
+      background: linear-gradient(135deg, #f0f4ff 0%, #e6e9ff 100%);
+      text-align: center;
+    }
+
+    .hero h1 {
+      font-size: 3.5rem;
+      font-weight: 800;
+      margin-bottom: 24px;
+      line-height: 1.2;
+    }
+
+    .hero p {
+      font-size: 1.4rem;
+      color: var(--dark-gray);
+      max-width: 650px;
+      margin: 0 auto 40px;
+    }
+
+    .hero-cta {
+      display: flex;
+      justify-content: center;
+      gap: 16px;
+      margin-top: 30px;
+      flex-wrap: wrap;
+    }
+
+    .mockup {
+      max-width: 800px;
+      margin: 60px auto 0;
+      border-radius: 32px;
+      overflow: hidden;
+      box-shadow: 0 20px 50px rgba(37, 40, 74, 0.15);
+      border: 1px solid rgba(37, 40, 74, 0.1);
+    }
+
+    .mockup img {
+      width: 100%;
+      display: block;
+    }
+
+    /* Problem/Solution */
+    .problem-solution {
+      background: var(--white);
+    }
+
+    .problem-solution h2 {
+      text-align: center;
+      font-size: 2.5rem;
+      margin-bottom: 50px;
+      color: var(--indigo);
+    }
+
+    .problem-list {
+      max-width: 700px;
+      margin: 0 auto 40px;
+      text-align: center;
+    }
+
+    .problem-list li {
+      font-size: 1.2rem;
+      margin: 20px 0;
+      color: var(--dark-gray);
+    }
+
+    .solution {
+      background: var(--light-gray);
+      padding: 40px;
+      border-radius: 20px;
+      text-align: center;
+      max-width: 800px;
+      margin: 40px auto 0;
+      font-size: 1.4rem;
+      font-weight: 600;
+      color: var(--indigo);
+    }
+
+    /* How It Works */
+    .how-it-works {
+      background: var(--light-gray);
+    }
+
+    .how-it-works h2 {
+      text-align: center;
+      font-size: 2.5rem;
+      margin-bottom: 60px;
+    }
+
+    .steps {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 30px;
+      margin-top: 40px;
+    }
+
+    .step {
+      background: var(--white);
+      padding: 40px 30px;
+      border-radius: 20px;
+      width: 100%;
+      max-width: 320px;
+      text-align: center;
+      box-shadow: 0 10px 30px rgba(37, 40, 74, 0.08);
+      transition: transform 0.3s ease;
+    }
+
+    .step:hover {
+      transform: translateY(-8px);
+    }
+
+    .step-icon {
+      width: 70px;
+      height: 70px;
+      background: rgba(77, 111, 255, 0.1);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 0 auto 24px;
+      font-size: 28px;
+      color: var(--electric-blue);
+    }
+
+    .step h3 {
+      font-size: 1.5rem;
+      margin-bottom: 16px;
+    }
+
+    /* Features */
+    .features-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 30px;
+      margin-top: 40px;
+    }
+
+    .feature-card {
+      display: flex;
+      gap: 20px;
+    }
+
+    .feature-icon {
+      font-size: 24px;
+      color: var(--electric-blue);
+      min-width: 36px;
+      padding-top: 4px;
+    }
+
+    .feature-text h3 {
+      font-size: 1.3rem;
+      margin-bottom: 8px;
+    }
+
+    /* Trust */
+    .trust {
+      text-align: center;
+      padding: 60px 0;
+    }
+
+    .trust-badges {
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 30px;
+      margin-top: 30px;
+    }
+
+    .badge {
+      background: var(--white);
+      padding: 12px 24px;
+      border-radius: 12px;
+      font-weight: 600;
+      box-shadow: 0 4px 12px rgba(37, 40, 74, 0.08);
+    }
+
+    .trust-note {
+      max-width: 700px;
+      margin: 30px auto 0;
+      color: var(--dark-gray);
+      font-style: italic;
+    }
+
+    /* Waitlist CTA */
+    .waitlist {
+      background: linear-gradient(135deg, var(--indigo) 0%, #1a1c3a 100%);
+      color: var(--white);
+      text-align: center;
+      padding: 100px 0;
+    }
+
+    .waitlist h2 {
+      font-size: 2.8rem;
+      margin-bottom: 24px;
+    }
+
+    .waitlist p {
+      font-size: 1.3rem;
+      max-width: 600px;
+      margin: 0 auto 40px;
+      opacity: 0.9;
+    }
+
+    .waitlist-form {
+      max-width: 500px;
+      margin: 0 auto;
+      display: flex;
+      gap: 12px;
+    }
+
+    .waitlist-form input {
+      flex: 1;
+      padding: 16px 24px;
+      border-radius: 12px;
+      border: none;
+      font-size: 16px;
+      outline: none;
+    }
+
+    .waitlist-form button {
+      background: var(--electric-blue);
+      color: white;
+      border: none;
+      padding: 0 32px;
+      border-radius: 12px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: background 0.3s;
+    }
+
+    .waitlist-form button:hover {
+      background: var(--electric-blue-hover);
+    }
+
+    .privacy-note {
+      margin-top: 20px;
+      font-size: 0.95rem;
+      opacity: 0.8;
+    }
+
+    /* Footer */
+    footer {
+      background: var(--indigo);
+      color: rgba(255, 255, 255, 0.7);
+      padding: 40px 0 20px;
+    }
+
+    .footer-content {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      gap: 40px;
+      margin-bottom: 30px;
+    }
+
+    .footer-logo {
+      font-size: 22px;
+      font-weight: 700;
+      color: var(--white);
+      margin-bottom: 16px;
+    }
+
+    .footer-links {
+      display: flex;
+      gap: 30px;
+    }
+
+    .footer-links a {
+      color: rgba(255, 255, 255, 0.8);
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+
+    .footer-links a:hover {
+      color: var(--white);
+    }
+
+    .copyright {
+      text-align: center;
+      padding-top: 20px;
+      border-top: 1px solid rgba(255, 255, 255, 0.1);
+      font-size: 0.9rem;
+    }
+
+    /* Responsive */
+    @media (max-width: 768px) {
+      .hero h1 {
+        font-size: 2.5rem;
+      }
+      
+      .hero p {
+        font-size: 1.2rem;
+      }
+      
+      .hero-cta {
+        flex-direction: column;
+        align-items: center;
+      }
+      
+      .btn-secondary {
+        margin-left: 0;
+        margin-top: 12px;
+      }
+      
+      .waitlist-form {
+        flex-direction: column;
+      }
+      
+      .footer-content {
+        flex-direction: column;
+        gap: 30px;
+      }
+      
+      .footer-links {
+        flex-wrap: wrap;
+        gap: 15px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <!-- Header -->
+  <header>
+    <div class="container header-content">
+      <a href="#" class="logo">Passkey<span>Wallet</span></a>
+      <nav>
+        <!-- Empty for now - can add links later -->
+      </nav>
+    </div>
+  </header>
+
+  <!-- Hero Section -->
+  <section class="hero">
+    <div class="container">
+      <h1>Your crypto, unlocked by you.</h1>
+      <p>The world’s first seedless wallet. Secure. Simple. Yours.</p>
+      <div class="hero-cta">
+        <a href="#waitlist" class="btn btn-primary">Join Waitlist</a>
+        <a href="#how-it-works" class="btn btn-secondary">How It Works</a>
+      </div>
+      <div class="mockup">
+        <!-- Placeholder for wallet mockup image -->
+        <div style="background: linear-gradient(135deg, #4D6FFF 0%, #8A6BFF 100%); height: 500px; display: flex; align-items: center; justify-content: center; color: white; font-weight: bold;">
+          Wallet App Mockup<br><small>(Fingerprint Unlock Animation)</small>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Problem/Solution -->
+  <section class="problem-solution">
+    <div class="container">
+      <h2>Seed phrases are broken.</h2>
+      <ul class="problem-list">
+        <li>Lose your seed phrase? Lose everything.</li>
+        <li>1 in 5 users have been locked out of their crypto.</li>
+        <li>Why should owning your keys feel like defusing a bomb?</li>
+      </ul>
+      <div class="solution">
+        Introducing Passkey Wallet: self-custody, simplified.
+      </div>
+    </div>
+  </section>
+
+  <!-- How It Works -->
+  <section class="how-it-works" id="how-it-works">
+    <div class="container">
+      <h2>How It Works</h2>
+      <div class="steps">
+        <div class="step">
+          <div class="step-icon">1</div>
+          <h3>Enroll</h3>
+          <p>Set up with Face ID, fingerprint, or device passkey.</p>
+        </div>
+        <div class="step">
+          <div class="step-icon">2</div>
+          <h3>Own</h3>
+          <p>Store, send, and swap assets across 10+ chains.</p>
+        </div>
+        <div class="step">
+          <div class="step-icon">3</div>
+          <h3>Recover</h3>
+          <p>Instantly restore on any device—no 24 words needed.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Features -->
+  <section class="features">
+    <div class="container">
+      <h2 style="text-align: center; font-size: 2.5rem; margin-bottom: 60px;">Everything You Need</h2>
+      <div class="features-grid">
+        <div class="feature-card">
+          <div class="feature-icon">🔒</div>
+          <div class="feature-text">
+            <h3>Seedless Security</h3>
+            <p>FIDO2/WebAuthn standard. Military-grade encryption without seed phrases.</p>
+          </div>
+        </div>
+        <div class="feature-card">
+          <div class="feature-icon">🌐</div>
+          <div class="feature-text">
+            <h3>Multi-Chain</h3>
+            <p>Ethereum, Solana, Base, Arbitrum & more. One wallet for all your assets.</p>
+          </div>
+        </div>
+        <div class="feature-card">
+          <div class="feature-icon">⚡</div>
+          <div class="feature-text">
+            <h3>Smart Gas</h3>
+            <p>Auto-select cheapest network + fee. Never overpay for transactions.</p>
+          </div>
+        </div>
+        <div class="feature-card">
+          <div class="feature-icon">🔄</div>
+          <div class="feature-text">
+            <h3>Cross-Chain Swaps</h3>
+            <p>One-click asset bridging. Move value between chains instantly.</p>
+          </div>
+        </div>
+        <div class="feature-card">
+          <div class="feature-icon">📱</div>
+          <div class="feature-text">
+            <h3>Mobile-First</h3>
+            <p>iOS & Android native apps. Crypto in your pocket, secured by your biometrics.</p>
+          </div>
+        </div>
+        <div class="feature-card">
+          <div class="feature-icon">🛡️</div>
+          <div class="feature-text">
+            <h3>Non-Custodial</h3>
+            <p>You own your keys—always. We never touch your private keys.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Trust & Compliance -->
+  <section class="trust">
+    <div class="container">
+      <h2>Built on Trust</h2>
+      <div class="trust-badges">
+        <div class="badge">Audited by OpenZeppelin</div>
+        <div class="badge">GDPR Compliant</div>
+        <div class="badge">Open-Source Core</div>
+      </div>
+      <p class="trust-note">Built with privacy and regulatory foresight from day one.</p>
+    </div>
+  </section>
+
+  <!-- Waitlist CTA -->
+  <section class="waitlist" id="waitlist">
+    <div class="container">
+      <h2>Be among the first to own your crypto—safely.</h2>
+      <p>Join our waitlist for early access and exclusive updates.</p>
+      <form class="waitlist-form" id="waitlistForm">
+        <input type="email" placeholder="Your email address" required />
+        <button type="submit">Notify Me</button>
+      </form>
+      <p class="privacy-note">We respect your inbox. No spam. Ever.</p>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer>
+    <div class="container">
+      <div class="footer-content">
+        <div>
+          <div class="footer-logo">Passkey<span style="color:#4D6FFF">Wallet</span></div>
+          <p>© 2025 Passkey Wallet. Not your keys? Still your problem—until now.</p>
+        </div>
+        <div class="footer-links">
+          <a href="#">Privacy Policy</a>
+          <a href="#">Terms</a>
+          <a href="#">GitHub</a>
+          <a href="#">Twitter</a>
+          <a href="#">Discord</a>
+        </div>
+      </div>
+      <div class="copyright">
+        © 2025 Passkey Wallet. All rights reserved.
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    // Simple form submission handler
+    document.getElementById('waitlistForm').addEventListener('submit', function(e) {
+      e.preventDefault();
+      const email = this.querySelector('input').value;
+      // In a real app, you'd send this to your backend
+      alert(`Thank you! We'll notify you at ${email} when we launch.`);
+      this.reset();
+    });
+
+    // Smooth scrolling for anchor links
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+      anchor.addEventListener('click', function (e) {
+        e.preventDefault();
+        document.querySelector(this.getAttribute('href')).scrollIntoView({
+          behavior: 'smooth'
+        });
+      });
+    });
+  </script>
+</body>
+</html>
